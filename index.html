@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon Gusto | Principal Research Scientist</title>
+    <meta name="description" content="Principal Research Scientist specializing in acoustic signal processing, computational fluid dynamics, scientific computing, and multifidelity Bayesian optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="#about">about</a>
+                <a href="#expertise">expertise</a>
+                <a href="#projects">projects</a>
+                <a href="#contact">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h1 class="hero-title">Brandon Gusto, Ph.D.</h1>
+            <p class="hero-subtitle">Principal Research Scientist</p>
+            <p class="hero-tagline">Specializing in computational physics, optimization, and scientific software.</p>
+        </section>
+
+        <section id="about" class="section about-section">
+            <h2>About</h2>
+            <div class="about-content">
+                <img src="images/BrandonGusto.jpg" alt="Brandon Gusto" class="headshot">
+                <div class="about-text">
+                    <p>I am a Principal Research Scientist and Department of Defense SMART Scholar. My expertise spans modeling and simulation, optimization algorithms, software development, machine learning, and signal processing.</p>
+                    <p>My research goes beyond developing new algorithms. I architect and deliver production-quality scientific software built for high performance computing. These software often depend on MPI, performance portable GPU libraries, and popular scientific computing libraries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="section">
+            <h2>Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Scientific Computing</h3>
+                    <p>Development of scalable, high-performance software for numerical simulations and data analysis pipelines.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Multifidelity Bayesian Optimization</h3>
+                    <p>Novel optimization schemes combining multi-objective optimization with multifidelity surrogate models for efficient design space exploration.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Computational Fluid Dynamics</h3>
+                    <p>High-fidelity CFD simulations for engineering applications.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Acoustic Signal Processing</h3>
+                    <p>Algorithm development for acoustic analysis, beamforming, source localization, and noise characterization in complex environments.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="tech-tags">
+                <span>Object-Oriented C++</span>
+                <span>Fortran</span>
+                <span>Python</span>
+                <span>Matlab</span>
+                <span>MPI</span>
+                <span>CUDA</span>
+                <span>OCCA</span>
+                <span>MAGMA</span>
+                <span>SLATE</span>
+                <span>PETSc</span>
+                <span>HDF5</span>
+                <span>PyTorch</span>
+                <span>Adaptive Mesh Refinement</span>
+                <span>Large-Eddy Simulation</span>
+                <span>Reynolds-Averaged Navier-Stokes</span>
+                <span>Bayesian Optimization</span>
+                <span>Gaussian Processes</span>
+                <span>Software Engineering</span>
+                <span>High Performance Computing</span>
+                <span>Dynamic Mode Decomposition</span>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <p class="section-intro">Selected research projects and software contributions demonstrating applied expertise.</p>
+
+            <div class="projects-grid">
+                <a href="project-mfbo.html" class="project-card">
+                    <div class="project-header">
+                        <h3>Multi-Fidelity Bayesian Optimization</h3>
+                        <span class="project-tag">Optimization + ML</span>
+                    </div>
+                    <p class="project-description">Extended random embedding Bayesian optimization to leverage multi-fidelity data sources for high-dimensional problems. Introduced a multi-armed bandit approach for intelligent embedding selection using Thompson sampling.</p>
+                    <div class="project-tech">
+                        <span>Matlab</span>
+                        <span>Python</span>
+                    </div>
+                </a>
+
+                <a href="project-ddt.html" class="project-card">
+                    <div class="project-header">
+                        <h3>DDT in Type Ia Supernovae</h3>
+                        <span class="project-tag">CFD + ML</span>
+                    </div>
+                    <p class="project-description">Large-scale DNS campaign (27,791 simulations) exploring deflagration-to-detonation transition in thermonuclear supernovae. Developed neural network classifiers achieving 97%+ accuracy for predicting detonation formation from hotspot configurations.</p>
+                    <div class="project-tech">
+                        <span>Fortran</span>
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>MPI</span>
+                    </div>
+                </a>
+
+                <a href="project-hamr.html" class="project-card">
+                    <div class="project-header">
+                        <h3>Hybrid Adaptive Multiresolution</h3>
+                        <span class="project-tag">CFD + HPC</span>
+                    </div>
+                    <p class="project-description">Novel mesh adaptation method combining block-structured AMR with multiresolution analysis for reactive flow simulations. Achieves significant speedups through solver-adaptive techniques that replace expensive calculations with interpolation in smooth regions.</p>
+                    <div class="project-tech">
+                        <span>Fortran</span>
+                        <span>MPI</span>
+                        <span>AMR</span>
+                        <span>FLASH</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <section id="publications" class="section">
+            <h2>Publications</h2>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <span class="pub-authors">B. Gusto and T. Plewa.</span>
+                    <span class="pub-title"><a href="https://doi.org/10.1016/j.cpc.2022.108300" class="inline-link">"A hybrid adaptive multiresolution approach for the efficient simulation of reactive flows."</a></span>
+                    <span class="pub-venue">Computer Physics Communications, vol. 274, 2022.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>Interested in collaboration or have questions about my research? Get in touch.</p>
+            <a href="mailto:brandonlgusto@protonmail.com" class="contact-link">brandonlgusto@protonmail.com</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <svg class="footer-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="footer-rounded-flag">
+                        <rect width="60" height="40" rx="6" ry="6"/>
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#footer-rounded-flag)">
+                    <rect width="60" height="40" fill="#B22234"/>
+                    <rect width="60" height="3.08" y="3.08" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="9.23" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="15.38" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="21.54" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="27.69" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="33.85" fill="#FFFFFF"/>
+                    <rect width="24" height="21.54" fill="#3C3B6E"/>
+                </g>
+                <rect width="60" height="40" rx="6" ry="6" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </svg>
+            <div class="footer-text">
+                <p class="footer-copyright">&copy; 2025 Brandon Gusto. All Rights Reserved.</p>
+                <p class="footer-legal">Made in the United States of America</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

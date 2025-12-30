@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Fidelity Bayesian Optimization | Brandon Gusto</title>
+    <meta name="description" content="Extending Bayesian optimization to high-dimensional problems using random embeddings and multi-fidelity information fusion.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#about">about</a>
+                <a href="index.html#expertise">expertise</a>
+                <a href="index.html#projects">projects</a>
+                <a href="index.html#contact">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="project-hero">
+            <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+            <h1 class="project-title">Multi-Fidelity Random Embedding Bayesian Optimization</h1>
+            <p class="project-meta">Bayesian Optimization | Machine Learning | High-Dimensional Optimization</p>
+        </section>
+
+        <section class="section">
+            <h2>Overview</h2>
+            <p>Bayesian optimization is a sample-efficient approach to optimizing expensive-to-evaluate black-box functions, particularly when observations are noisy. However, standard methods suffer from the curse of dimensionality&mdash;performance degrades rapidly for problems with more than ~20 parameters.</p>
+            <p>This research extends random embedding Bayesian optimization to leverage multi-fidelity information sources and introduces a novel embedding selection strategy based on multi-armed bandit algorithms. These advances enable efficient optimization of high-dimensional problems by exploiting low effective dimensionality while reducing computational cost through intelligent use of cheap approximations.</p>
+        </section>
+
+        <section class="section">
+            <h2>Random Embeddings</h2>
+            <p>Many high-dimensional optimization problems have low effective dimensionality&mdash;the objective function varies primarily within an unknown low-dimensional subspace. Random embedding methods exploit this structure by optimizing within randomly-oriented low-dimensional linear subspaces of the original space.</p>
+            <div class="figure-container">
+                <img src="images/mfbo-embeddings.png" alt="Nine random 2D embeddings of a 6-dimensional function showing polytope-shaped feasible regions">
+                <p class="figure-caption">Nine random embeddings with dimension d<sub>e</sub> = 2 of a 6-dimensional test function. Each embedding reveals a different 2D slice through the high-dimensional landscape. Linear constraints define polytope-shaped feasible regions that avoid nonlinearities from projecting points back to the original domain.</p>
+            </div>
+            <p>By maintaining multiple embeddings and using a geometry-aware Mahalanobis kernel, the algorithm can efficiently explore the high-dimensional space while building accurate surrogate models within each low-dimensional subspace.</p>
+        </section>
+
+        <section class="section">
+            <h2>Key Contributions</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <h3>Multi-Fidelity Extension</h3>
+                    <p>Extended the ALEBO algorithm to incorporate observations at multiple fidelity levels using an autoregressive Gaussian process model, enabling use of cheap approximations to guide expensive evaluations.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>Bandit-Based Selection</h3>
+                    <p>Introduced a contextual multi-armed bandit formulation for embedding selection using Thompson sampling, balancing exploration of uncertain embeddings with exploitation of promising ones.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>Sample Efficiency</h3>
+                    <p>Achieved significant reduction in required high-fidelity evaluations by intelligently allocating samples across fidelity levels and embeddings based on expected improvement.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Multi-Fidelity Modeling</h2>
+            <p>The multi-fidelity approach models the relationship between cheap approximations and expensive ground truth using an autoregressive structure. The high-fidelity function is expressed as a scaled version of the low-fidelity function plus a learned discrepancy:</p>
+            <p>This formulation allows information from many inexpensive evaluations to inform the surrogate model, reducing the number of costly high-fidelity samples needed to find the optimum. The correlation coefficient and discrepancy function are learned jointly by maximizing the log marginal likelihood.</p>
+        </section>
+
+        <section class="section">
+            <h2>Embedding Selection as a Bandit Problem</h2>
+            <p>When maintaining multiple random embeddings, a key question is which embedding to sample next. Sequential cycling through embeddings can waste evaluations on subspaces that don't contain the optimum.</p>
+            <p>By formulating embedding selection as a multi-armed bandit problem, the algorithm learns which embeddings are most promising. A reward function combining immediate improvement with expected improvement guides Thompson sampling to balance:</p>
+            <ul class="tech-list">
+                <li><strong>Exploitation:</strong> Focusing samples on embeddings that have yielded good solutions</li>
+                <li><strong>Exploration:</strong> Sampling uncertain embeddings that may contain undiscovered optima</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Applications</h2>
+            <p>This framework applies to any expensive-to-evaluate optimization problem with many parameters but suspected low effective dimensionality:</p>
+            <ul class="tech-list">
+                <li><strong>Engineering Design:</strong> Aerodynamic shape optimization, structural design, materials discovery</li>
+                <li><strong>Hyperparameter Tuning:</strong> Neural network architecture search, algorithm configuration</li>
+                <li><strong>Scientific Computing:</strong> Calibration of simulation parameters, surrogate-based optimization</li>
+                <li><strong>Experimental Design:</strong> Sequential experimental optimization with costly physical tests</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Technologies</h2>
+            <div class="tech-tags">
+                <span>Matlab</span>
+                <span>Python</span>
+                <span>Bayesian Optimization</span>
+                <span>Gaussian Processes</span>
+                <span>Multi-Armed Bandits</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <svg class="footer-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="footer-rounded-flag">
+                        <rect width="60" height="40" rx="6" ry="6"/>
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#footer-rounded-flag)">
+                    <rect width="60" height="40" fill="#B22234"/>
+                    <rect width="60" height="3.08" y="3.08" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="9.23" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="15.38" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="21.54" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="27.69" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="33.85" fill="#FFFFFF"/>
+                    <rect width="24" height="21.54" fill="#3C3B6E"/>
+                </g>
+                <rect width="60" height="40" rx="6" ry="6" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </svg>
+            <div class="footer-text">
+                <p class="footer-copyright">&copy; 2025 Brandon Gusto. All Rights Reserved.</p>
+                <p class="footer-legal">Made in the United States of America</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

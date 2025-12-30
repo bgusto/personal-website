@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDT in Type Ia Supernovae | Brandon Gusto</title>
+    <meta name="description" content="Large-scale DNS and neural network classifiers for predicting deflagration-to-detonation transition in Type Ia supernovae.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#about">about</a>
+                <a href="index.html#expertise">expertise</a>
+                <a href="index.html#projects">projects</a>
+                <a href="index.html#contact">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="project-hero">
+            <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+            <h1 class="project-title">Critical Conditions for DDT in Type Ia Supernovae</h1>
+            <p class="project-meta">Computational Astrophysics | Machine Learning | High-Performance Computing</p>
+        </section>
+
+        <section class="section">
+            <h2>Overview</h2>
+            <p>Type Ia supernovae serve as "standard candles" for measuring cosmic distances, yet their explosion mechanism remains incompletely understood. A key question is how the initial subsonic burning (deflagration) transitions to supersonic detonation. This research presents the largest parameter space exploration of deflagration-to-detonation transition (DDT) to date, combining 27,791 direct numerical simulations with neural network classifiers to predict detonation formation.</p>
+        </section>
+
+        <section class="section">
+            <h2>The Tyranny of Scales</h2>
+            <p>A fundamental challenge in modeling Type Ia supernovae is the enormous range of scales involved. The white dwarf radius is approximately 10<sup>8</sup> cm (~1,000 km), while the DDT-controlling scales where detonation initiation occurs are only 10<sup>2</sup>-10<sup>4</sup> cm (1-100 meters). This spans roughly 6 orders of magnitude that must be resolved simultaneously.</p>
+            <p>Current computational capabilities cannot resolve all relevant scales in a single simulation. Full-star explosion simulations must use grid cells of ~10<sup>5</sup> cm or larger, completely missing the microphysics of DDT. This necessitates subgrid-scale (SGS) modeling approaches&mdash;but developing accurate SGS models requires understanding the physics at scales we cannot directly simulate in context.</p>
+            <div class="figure-container">
+                <img src="images/wd-scales-ddt.png" alt="Diagram showing the range of scales in Type Ia supernovae from white dwarf radius down to DDT scales">
+                <p class="figure-caption">The "tyranny of scales" in Type Ia supernova modeling. The white dwarf radius (~10<sup>8</sup> cm) dwarfs the DDT-critical scales (~10<sup>2</sup>-10<sup>4</sup> cm) by many orders of magnitude. Full-star simulations cannot resolve the detonation initiation physics, requiring targeted DNS studies at small scales to inform subgrid-scale models.</p>
+            </div>
+            <p>Our approach addresses this challenge through targeted direct numerical simulations (DNS) at the small scales where DDT physics operates. By building a comprehensive database of hotspot configurations and outcomes, we can develop data-driven models that capture the essential physics for use in larger-scale simulations.</p>
+        </section>
+
+        <section class="section">
+            <h2>Key Findings</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <h3>Smaller Critical Scales</h3>
+                    <p>Detonation-forming hotspots can occur at critical radii of ~200 cm, substantially smaller than previous estimates of 10,000-100,000 cm. This significantly increases the predicted likelihood of DDT in delayed detonation scenarios.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>Density Dependence</h3>
+                    <p>Critical conditions exhibit strong density dependence but weak temperature sensitivity within 1.55-2.2 billion K. Higher ambient densities shift the critical boundary toward smaller required hotspot sizes.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>97%+ Classification Accuracy</h3>
+                    <p>Neural network classifiers achieve validation accuracies exceeding 97% for predicting whether a given hotspot configuration will detonate, providing a foundation for future subgrid-scale models.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Phase Diagram</h2>
+            <p>The simulation campaign mapped three distinct regimes in the amplitude-width parameter space: volumetric burning (insufficient energy release), carbon deflagration (shocks form but coupling fails), and carbon detonation (successful shock-reaction coupling).</p>
+            <div class="figure-container">
+                <img src="images/ddtplane-temp178e09-hires.png" alt="DDT Phase Diagram showing three regimes: volumetric burning, deflagration, and detonation">
+                <p class="figure-caption">Phase diagram for synthetic hotspots showing amplitude versus width. Three regimes emerge: volumetric burning (white), carbon deflagration (grey), and carbon detonation (black). The boundary between deflagration and detonation defines the critical conditions for DDT.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Validation with Realistic Turbulence</h2>
+            <p>While idealized Gaussian hotspots reveal the fundamental physics, real DDT occurs in turbulent environments with complex, asymmetric temperature and velocity fields. To validate our findings, we extracted 25,269 realistic hotspot configurations from three-dimensional reactive turbulence simulations and tested whether Khokhlov's timescale criterion still applies.</p>
+            <p>The key insight from Khokhlov (1991) is that detonation requires the reactive timescale (how synchronized the burning is) to be shorter than the acoustic timescale (how fast pressure waves cross the hotspot). When this condition is met, the reactive wave can couple with the leading shock to form a self-sustaining detonation.</p>
+            <div class="figure-container">
+                <img src="images/khokhlovplane-tburn-all-1.png" alt="Timescale plane showing turbulence-extracted hotspot samples">
+                <p class="figure-caption">Validation using turbulence-extracted hotspots on the timescale plane. Left: bivariate histogram of non-detonating samples. Right: detonating samples. The dotted red line shows the critical boundary from idealized simulations. Non-detonating samples concentrate above/left of the curve (reactive timescale too long), while detonating samples fall below/right (successful coupling). Scatter arises from density fluctuations (~15%) and velocity divergence effects not captured by the simple criterion.</p>
+            </div>
+            <p>The results confirm that Khokhlov's condition provides a necessary but not sufficient criterion for DDT. Deviations in realistic turbulence arise from velocity divergence (local compression or expansion), non-Gaussian profile shapes, and density fluctuations. These complexities motivate our neural network approach, which can learn the full nonlinear mapping from initial conditions to outcomes.</p>
+        </section>
+
+        <section class="section">
+            <h2>Neural Network Approach</h2>
+            <p>To identify patterns in this large parameter space, we developed convolutional neural network classifiers that learn directly from spatial profiles of induction time, density, and velocity. The networks were trained on both idealized Gaussian hotspots and realistic configurations extracted from 3D reactive turbulence simulations.</p>
+            <div class="figure-container">
+                <img src="images/nn-architecture.png" alt="Neural network architecture diagram">
+                <p class="figure-caption">Neural network architecture combining convolutional layers for spatial feature extraction with fully connected layers for classification. The network maps initial hotspot profiles to binary detonation/no-detonation predictions.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Approach</h2>
+            <ul class="tech-list">
+                <li><strong>Simulation Framework:</strong> Proteus (fork of FLASH code) with PPM hydrodynamics, 13-isotope nuclear network, and Helmholtz EOS</li>
+                <li><strong>Resolution:</strong> Adaptive mesh refinement with ~20 cm minimum cell size to resolve detonation structure</li>
+                <li><strong>Database:</strong> 2,522 synthetic Gaussian hotspots + 25,269 turbulence-extracted configurations</li>
+                <li><strong>ML Framework:</strong> TensorFlow/Keras with convolutional and dense layers, Adam optimizer, binary cross-entropy loss</li>
+                <li><strong>Compute:</strong> NERSC high-performance computing resources</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Impact</h2>
+            <p>These results have important implications for Type Ia supernova modeling. The smaller critical radii make DDT more probable in the delayed detonation scenario than previously estimated, potentially resolving tensions between models and observations. The data-driven classifiers provide quantitative hotspot viability predictions that can inform future subgrid-scale models in full-star explosion simulations.</p>
+        </section>
+
+        <section class="section">
+            <h2>Technologies</h2>
+            <div class="tech-tags">
+                <span>Fortran</span>
+                <span>Python</span>
+                <span>TensorFlow</span>
+                <span>MPI</span>
+                <span>HDF5</span>
+                <span>AMR</span>
+                <span>CFD</span>
+                <span>Neural Networks</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <svg class="footer-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="footer-rounded-flag">
+                        <rect width="60" height="40" rx="6" ry="6"/>
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#footer-rounded-flag)">
+                    <rect width="60" height="40" fill="#B22234"/>
+                    <rect width="60" height="3.08" y="3.08" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="9.23" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="15.38" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="21.54" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="27.69" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="33.85" fill="#FFFFFF"/>
+                    <rect width="24" height="21.54" fill="#3C3B6E"/>
+                </g>
+                <rect width="60" height="40" rx="6" ry="6" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </svg>
+            <div class="footer-text">
+                <p class="footer-copyright">&copy; 2025 Brandon Gusto. All Rights Reserved.</p>
+                <p class="footer-legal">Made in the United States of America</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

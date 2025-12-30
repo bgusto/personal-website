@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMR: Hybrid Adaptive Multiresolution | Brandon Gusto</title>
+    <meta name="description" content="A hybrid adaptive multiresolution approach for efficient simulation of reactive flows, combining block-structured AMR with multiresolution analysis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#about">about</a>
+                <a href="index.html#expertise">expertise</a>
+                <a href="index.html#projects">projects</a>
+                <a href="index.html#contact">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="project-hero">
+            <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+            <h1 class="project-title">Hybrid Adaptive Multiresolution for Reactive Flows</h1>
+            <p class="project-meta">Computational Methods | Adaptive Mesh Refinement | High-Performance Computing</p>
+        </section>
+
+        <section class="section">
+            <h2>Overview</h2>
+            <p>Simulating reactive flows with shocks, flames, and detonations requires resolving thin reaction zones embedded in much larger computational domains. Traditional block-structured adaptive mesh refinement (AMR) excels at focusing resolution where needed, but refinement criteria based on local solution features can be unreliable for stiff reactive systems.</p>
+            <p>This work introduces HAMR (Hybrid Adaptive Multiresolution), which combines the geometric flexibility of block-structured AMR with the rigorous error control of multiresolution (MR) analysis. The result is a method that automatically identifies regions requiring high resolution while enabling aggressive coarsening elsewhere&mdash;achieving significant computational savings without sacrificing accuracy.</p>
+        </section>
+
+        <section class="section">
+            <h2>Adaptive Mesh Visualization</h2>
+            <p>The video below demonstrates HAMR applied to the Hawley-Zabusky problem, showing how the adaptive mesh tracks complex shock interactions and instabilities in real time. Notice how refinement follows the evolving flow structures while maintaining efficiency in smooth regions.</p>
+            <div class="figure-container">
+                <video controls autoplay muted loop playsinline style="width: 100%; display: block;">
+                    <source src="images/hz-mrppm-n512y-amr-eps1e02-kap1e02-wavelet-mesh-comoving.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="figure-caption">Hawley-Zabusky problem simulated with HAMR: a shock impinging on an oblique material interface. The adaptive mesh (shown overlaid) dynamically tracks shock fronts, contact discontinuities, and developing baroclinic vorticity generation while coarsening in smooth regions.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Innovations</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <h3>MR Smoothness Indicators</h3>
+                    <p>Wavelet-based multiresolution analysis provides mathematically rigorous smoothness indicators that reliably detect features requiring refinement, even for stiff reactive systems where gradient-based criteria fail.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>Solver-Adaptive Methods</h3>
+                    <p>In regions identified as smooth by MR analysis, expensive flux calculations are replaced with high-order interpolation from coarser data&mdash;reducing computational cost while maintaining accuracy within prescribed tolerances.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>Block-Structured Flexibility</h3>
+                    <p>Retains the parallelization advantages and geometric flexibility of block-structured AMR, enabling efficient implementation on modern HPC architectures with established AMR frameworks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>The Challenge</h2>
+            <p>Reactive flow simulations face a fundamental efficiency problem: reaction zones are extremely thin (often just a few grid cells), but accurately capturing their dynamics requires resolving them at all times throughout a much larger domain. Standard AMR addresses this by refining only near important features, but the refinement criteria themselves pose challenges:</p>
+            <ul class="tech-list">
+                <li><strong>Gradient-based criteria</strong> can miss incipient features or trigger unnecessary refinement in non-critical regions</li>
+                <li><strong>Physics-based criteria</strong> require problem-specific tuning and may not generalize across flow regimes</li>
+                <li><strong>Conservative approaches</strong> over-refine to ensure safety, negating much of AMR's efficiency benefit</li>
+            </ul>
+            <p>Multiresolution analysis provides a solution by quantifying the local truncation error directly from the solution data, enabling refinement decisions with rigorous error bounds.</p>
+        </section>
+
+        <section class="section">
+            <h2>Validation Problems</h2>
+            <p>HAMR was validated on a series of increasingly complex test problems:</p>
+            <ul class="tech-list">
+                <li><strong>Interacting Blast Waves:</strong> Classic 1D test with colliding shocks demonstrating shock-capturing accuracy under mesh adaptation</li>
+                <li><strong>Hawley-Zabusky Problem:</strong> 2D shock impinging on an oblique material interface with baroclinic vorticity generation, testing adaptation to evolving multiscale structures</li>
+                <li><strong>Cellular Detonation:</strong> Reactive flow with cellular instabilities, validating the method for stiff chemistry and thin reaction zones</li>
+                <li><strong>Reactive Turbulence:</strong> 3D turbulent combustion demonstrating scalability and efficiency for production-scale simulations</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Performance</h2>
+            <p>Compared to uniform-grid simulations at equivalent effective resolution, HAMR achieves substantial speedups while maintaining solution accuracy within prescribed error tolerances. The combination of aggressive mesh coarsening in smooth regions with solver-adaptive flux calculations yields multiplicative efficiency gains.</p>
+            <p>The method integrates with existing block-structured AMR frameworks, enabling adoption in production simulation codes without fundamental architectural changes.</p>
+        </section>
+
+        <section class="section">
+            <h2>Publication</h2>
+            <p class="publication-info"><strong>B. Gusto</strong> and T. Plewa. "A hybrid adaptive multiresolution approach for the efficient simulation of reactive flows." <em>Computer Physics Communications</em>.</p>
+        </section>
+
+        <section class="section">
+            <h2>Technologies</h2>
+            <div class="tech-tags">
+                <span>Fortran</span>
+                <span>MPI</span>
+                <span>AMR</span>
+                <span>CFD</span>
+                <span>Multiresolution Analysis</span>
+                <span>HPC</span>
+                <span>FLASH</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <svg class="footer-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="footer-rounded-flag">
+                        <rect width="60" height="40" rx="6" ry="6"/>
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#footer-rounded-flag)">
+                    <rect width="60" height="40" fill="#B22234"/>
+                    <rect width="60" height="3.08" y="3.08" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="9.23" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="15.38" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="21.54" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="27.69" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="33.85" fill="#FFFFFF"/>
+                    <rect width="24" height="21.54" fill="#3C3B6E"/>
+                </g>
+                <rect width="60" height="40" rx="6" ry="6" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </svg>
+            <div class="footer-text">
+                <p class="footer-copyright">&copy; 2025 Brandon Gusto. All Rights Reserved.</p>
+                <p class="footer-legal">Made in the United States of America</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
