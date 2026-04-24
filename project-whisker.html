@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LES of Bio-Inspired Geometries | Brandon Gusto</title>
+    <meta name="description" content="Large-eddy simulation of seal-whisker-inspired undulated cylinders in crossflow at Re = 2,400.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html#about">about</a>
+                <a href="index.html#expertise">expertise</a>
+                <a href="index.html#projects">projects</a>
+                <a href="index.html#contact">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="project-hero">
+            <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+            <h1 class="project-title">Large-Eddy Simulation of Bio-Inspired Geometries</h1>
+            <p class="project-meta">Bio-Inspired Flow Control | LES | VIV Suppression</p>
+        </section>
+
+        <section class="section">
+            <h2>Overview</h2>
+            <p>Incompressible wall-resolved large eddy simulation of an
+            undulated cylinder based on the harbor seal whisker, at
+            Re&nbsp;=&nbsp;2,400. The undulations disrupt the alternating
+            vortex shedding pattern seen from straight cylinders.  This leads
+            to a reduction in RMS lift.</p>
+        </section>
+
+        <section class="section">
+            <h2>Flow Visualization</h2>
+            <div class="figure-container">
+                <video controls autoplay muted loop playsinline style="width: 100%; display: block;">
+                    <source src="images/seal-whisker-les-re2400.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="figure-caption">Iso-surfaces of the Q-criterion
+                colored by spanwise vorticity &omega;<sub>z</sub>. The
+                undulations break up the spanwise-coherent vortex tubes that
+                drive periodic lift on a smooth cylinder.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Aspects</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <h3>Geometry</h3>
+                    <p>Undulated cylinder parameterized after the harbor seal vibrissa.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>LES Closure</h3>
+                    <p>OpenFOAM incompressible large eddy simulation with the WALE sub-grid-scale model for correct near-wall behavior.</p>
+                </div>
+                <div class="finding-card">
+                    <h3>Numerics</h3>
+                    <p>Second-order accurate in both space and time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Biological Inspiration</h2>
+            <p>Harbor seals track hydrodynamic wakes left by prey, sometimes
+            long after the fish has passed. It is suspected that the seals'
+            whiskers undergo minimal excitation in free flow.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Methodology</h2>
+            <ul class="tech-list">
+                <li><strong>Solver:</strong> Incompressible large eddy simulation in OpenFOAM.</li>
+                <li><strong>SGS model:</strong> WALE.</li>
+                <li><strong>Discretization:</strong> Second-order in space and time.</li>
+                <li><strong>Reynolds number:</strong> Re&nbsp;=&nbsp;2,400, based on the mean cylinder thickness.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Reference</h2>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <span class="pub-authors">W. Hanke et al.</span>
+                    <span class="pub-title"><a href="https://journals.biologists.com/jeb/article/213/15/2665/9733/Harbor-seal-vibrissa-morphology-suppresses-vortex" class="inline-link">"Harbor seal vibrissa morphology suppresses vortex-induced vibrations."</a></span>
+                    <span class="pub-venue">Journal of Experimental Biology, vol. 213, no. 15, 2010.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Technologies</h2>
+            <div class="tech-tags">
+                <span>OpenFOAM</span>
+                <span>LES</span>
+                <span>WALE</span>
+                <span>HPC</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <svg class="footer-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="footer-rounded-flag">
+                        <rect width="60" height="40" rx="6" ry="6"/>
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#footer-rounded-flag)">
+                    <rect width="60" height="40" fill="#B22234"/>
+                    <rect width="60" height="3.08" y="3.08" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="9.23" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="15.38" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="21.54" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="27.69" fill="#FFFFFF"/>
+                    <rect width="60" height="3.08" y="33.85" fill="#FFFFFF"/>
+                    <rect width="24" height="21.54" fill="#3C3B6E"/>
+                </g>
+                <rect width="60" height="40" rx="6" ry="6" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </svg>
+            <div class="footer-text">
+                <p class="footer-copyright">&copy; 2026 Brandon Gusto. All Rights Reserved.</p>
+                <p class="footer-legal">Made in the United States of America</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
